@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body{
+
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    background-color:whitesmoke;
+    padding: 30px;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid #ccc;
+    width: 350px;
+}
+
+.form h2{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.form label{
+    display: block;
+    margin-top: 5px;
+
+}
+
+.form input{
+    width: 100%;
+    padding: 10px;
+    border:none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5xp;
+    margin-bottom: 5px;
+}
+
+
+.form button{
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgb(66, 66, 220);
+    border: none;
+    border: 1px solid #ccc;
+}
+        .login{
+        margin-top:10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <form class="form" th:action="@{/register}" th:object="${user1}" method="post">
+
+        <h2>Register</h2>
+
+        <label>Username</label>
+        <input type="text" name="username" th:field="*{username}">
+        <div th:if="${#fields.hasErrors('username')}" style="color:red;">
+            <p th:errors="*{username}"></p>
+        </div>
+        <div th:if="${userExists}" style="color:red;">
+            <p th:text="${userExists}"></p>
+        </div>
+
+        <label>Email</label>
+        <input type="text" name="email" th:field="*{email}">
+        <div th:if="${#fields.hasErrors('email')}" style="color:red;">
+            <p th:errors="*{email}"></p>
+        </div>
+
+        <label>Password</label>
+        <input type="text" name="password" th:field="*{password}">
+        <div th:if="${#fields.hasErrors('password')}" style="color:red;">
+            <p th:errors="*{password}"></p>
+        </div>
+
+        <label>Confirm Password</label>
+        <input type="text" name="confirm" th:field="*{confirm}">
+        <div th:if="${#fields.hasErrors('confirm')}" style="color:red;">
+            <p th:errors="*{confirm}"></p>
+        </div>
+
+        <div th:if="${notMatch}" style="color:red;">
+            <p th:text="${notMatch}"></p>
+        </div>
+
+        <button type="submit">Submit</button>
+
+        <div class="login">you have account login here?<a href="/login">Login</a></div>
+
+    </form>
+
+</div>
+</body>
+</html>

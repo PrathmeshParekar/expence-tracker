@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+body{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.contianer{
+    background-color: whitesmoke;
+    padding: 30px;
+    width: 1500px;
+    margin: 50px;
+    border: none;
+    border: 1ps solid #ccc;
+}
+
+.form h2{
+    text-align: center;
+    margin-top: 5px;
+
+}
+
+.form label{
+    display: block;
+    margin-top: 5px;
+}
+
+.form input{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+.form button{
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: lightgreen;
+
+}
+    </style>
+</head>
+<body>
+
+<div class="contianer">
+
+    <form class="form" th:action="@{/change/{id} (id=${exp3.id})}" th:object="${exp3}" method="post">
+
+        <h2>Edit Expence</h2>
+
+        <label>Expence Name</label>
+        <input type="text" name="expencename" th:field="*{expencename}">
+        <div th:if="${#fields.hasErrors('expencename')}" style="color:red;">
+            <p th:errors="*{expencename}"></p>
+        </div>
+
+        <label>Ammount</label>
+        <input type="text" name="ammount" th:field="*{ammount}">
+        <div th:if="${#fields.hasErrors('ammount')}" style="color:red;">
+            <p th:errors="*{ammount}"></p>
+        </div>
+
+        <label>Date</label>
+        <input type="date" name="date" th:field="*{date}">
+        <div th:if="${#fields.hasErrors('date')}" style="color:red;">
+            <p th:errors="*{date}"></p>
+        </div>
+
+        <label>Description</label>
+        <input type="text" name="description" th:field="*{description}">
+        <div th:if="${#fields.hasErrors('description')}" style="color:red;">
+            <p th:errors="*{description}"></p>
+        </div>
+
+
+
+        <button type="submit">Submit</button>
+
+
+    </form>
+
+</div>
+
+</body>
+</html>

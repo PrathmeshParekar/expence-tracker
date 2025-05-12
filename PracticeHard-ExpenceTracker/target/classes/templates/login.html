@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body{
+
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    background-color:whitesmoke;
+    padding: 30px;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid #ccc;
+    width: 350px;
+}
+
+.form h2{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.form label{
+    display: block;
+    margin-top: 5px;
+
+}
+
+.form input{
+    width: 100%;
+    padding: 10px;
+    border:none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5xp;
+    margin-bottom: 5px;
+}
+
+
+.form button{
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color:green;
+    border: none;
+    border: 1px solid #ccc;
+}
+        .lgoin{
+         margin-top:10px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+
+  <form class="form" th:action="@{/login}" method="post">
+
+    <h2>Login</h2>
+
+      <div th:if="${param.error}">
+          <p style="color:red;">Invalid username or password</p>
+      </div>
+
+    <label>Username</label>
+    <input type="text" name="username">
+
+    <label>Password</label>
+    <input type="text" name="password">
+
+    <button type="submit">Login</button>
+      <div class="login">don't have account sign up here?<a href="/register">Sign Up</a></div>
+  </form>
+</div>
+
+</body>
+</html>
